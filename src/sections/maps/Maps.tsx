@@ -1,5 +1,4 @@
 import * as React from "react";
-import { createRoot } from "react-dom/client";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
@@ -13,7 +12,7 @@ export const Apps: React.VFC = () => {
 
   return (
     <div style={{ display: "flex", height: "100%" }}>
-      <Wrapper apiKey={"AIzaSyD-idAlbGeN5UxDkjIh9uT9NtaptQMp3yQ"}>
+      <Wrapper apiKey={process.env.NEXT_PUBLIC_TOKEN_GOOGLE_MAPS!}>
         <Map
           center={center}
           zoom={zoom}
@@ -111,8 +110,8 @@ const Marker: React.FC<google.maps.MarkerOptions> = (options) => {
   return null;
 };
 
-const deepCompareEqualsForMaps = createCustomEqual(
-  (deepEqual) => (a: any, b: any) => {
+// @ts-ignore
+const deepCompareEqualsForMaps = createCustomEqual((deepEqual) => (a: any, b: any) => {
     if (
       isLatLngLiteral(a) ||
       a instanceof google.maps.LatLng ||
@@ -146,7 +145,7 @@ function useDeepCompareEffectForMaps(
   React.useEffect(callback, dependencies.map(useDeepCompareMemoize));
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  const root = createRoot(document.getElementById("root")!);
-  root.render(<App />);
-});
+// window.addEventListener("DOMContentLoaded", () => {
+//   const root = createRoot(document.getElementById("root")!);
+//   root.render(<App />);
+// });
