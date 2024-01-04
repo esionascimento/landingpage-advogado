@@ -7,7 +7,7 @@ type Props = {
 export const Title = ({ children, ...props }: Props) => {
   return (
     <Typography
-      variant="h4"
+      variant="h5"
       textAlign={"center"}
       marginTop={3}
       marginBottom={2}
