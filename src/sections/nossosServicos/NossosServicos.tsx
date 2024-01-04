@@ -16,32 +16,32 @@ export function NossosServicosSection() {
           <Grid2 container spacing={2} disableEqualOverflow>
             <Grid2 xs={6} sm={4} md={4}>
               <CardServicos>
-                <Title variant="h5">DIREITO CIVIL</Title>
+                <Title variant="h6">DIREITO CIVIL</Title>
               </CardServicos>
             </Grid2>
             <Grid2 xs={6} sm={4} md={4}>
               <CardServicos>
-                <Title variant="h5">DIREITO DO CONSUMIDOR</Title>
+                <Title variant="h6">DIREITO DO CONSUMIDOR</Title>
               </CardServicos>
             </Grid2>
             <Grid2 xs={6} sm={4} md={4}>
               <CardServicos>
-                <Title variant="h5">DIREITO MÉDICO</Title>
+                <Title variant="h6">DIREITO MÉDICO</Title>
               </CardServicos>
             </Grid2>
             <Grid2 xs={6} sm={4} md={4}>
               <CardServicos>
-                <Title variant="h5">DIREITO AMBIENTAL</Title>
+                <Title variant="h6">DIREITO AMBIENTAL</Title>
               </CardServicos>
             </Grid2>
             <Grid2 xs={6} sm={4} md={4}>
               <CardServicos>
-                <Title variant="h5">DIREITO PENAL</Title>
+                <Title variant="h6">DIREITO PENAL</Title>
               </CardServicos>
             </Grid2>
             <Grid2 xs={6} sm={4} md={4}>
               <CardServicos>
-                <Title variant="h5">DIREITO TRABALHISTA</Title>
+                <Title variant="h6">DIREITO TRABALHISTA</Title>
               </CardServicos>
             </Grid2>
           </Grid2>
