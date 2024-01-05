@@ -1,19 +1,34 @@
-"use client";
-import createCache from "@emotion/cache";
-import { useServerInsertedHTML } from "next/navigation";
-import { CacheProvider, ThemeProvider } from "@emotion/react";
-import React from "react";
-import { theme } from "@/theme/theme";
-import { CssBaseline } from "@mui/material";
+'use client';
+import createCache from '@emotion/cache';
+import { useServerInsertedHTML } from 'next/navigation';
+import { CacheProvider } from '@emotion/react';
+import React, { useMemo } from 'react';
+import {
+  CssBaseline,
+  StyledEngineProvider,
+  ThemeOptions,
+  ThemeProvider,
+  createTheme,
+} from '@mui/material';
+import palette from '@/theme/palette';
+import useSettings from '@/hooks/useSettings';
 
-// This implementation is from emotion-js
-// https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
-export default function ThemeRegistry({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const options = { key: "mui" };
+export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
+  const options = { key: 'mui' };
+
+  const { themeMode } = useSettings();
+
+  const isLight = themeMode === 'light';
+
+  const themeOptions: ThemeOptions = useMemo(
+    () => ({
+      palette: isLight ? palette.light : palette.dark,
+      shape: { borderRadius: 8 },
+    }),
+    [themeMode]
+  );
+
+  const theme = createTheme(themeOptions);
 
   const [{ cache, flush }] = React.useState(() => {
     const cache = createCache(options);
@@ -40,14 +55,14 @@ export default function ThemeRegistry({
     if (names.length === 0) {
       return null;
     }
-    let styles = "";
+    let styles = '';
     for (const name of names) {
       styles += cache.inserted[name];
     }
     return (
       <style
         key={cache.key}
-        data-emotion={`${cache.key} ${names.join(" ")}`}
+        data-emotion={`${cache.key} ${names.join(' ')}`}
         dangerouslySetInnerHTML={{
           __html: styles,
         }}
@@ -57,10 +72,12 @@ export default function ThemeRegistry({
 
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </StyledEngineProvider>
     </CacheProvider>
   );
 }
