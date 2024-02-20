@@ -10,6 +10,7 @@ import {
   ThemeProvider,
   createTheme,
 } from '@mui/material';
+
 import palette from '@/theme/palette';
 import useSettings from '@/hooks/useSettings';
 
@@ -22,10 +23,12 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
 
   const themeOptions: ThemeOptions = useMemo(
     () => ({
-      palette: isLight ? palette.light : palette.dark,
+      palette: palette.light,
       shape: { borderRadius: 8 },
     }),
-    [themeMode]
+    [
+      /* themeMode */
+    ]
   );
 
   const theme = createTheme(themeOptions);
