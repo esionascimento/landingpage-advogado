@@ -1,11 +1,12 @@
-"use client";
-import { Box } from "@mui/material";
+'use client';
+import { Box, useTheme } from '@mui/material';
 
-import { AppBarSection } from "../appBar/AppBar";
-import { ContainerInitialSection } from "../containerInitial/ContainerInitial";
-import { NossosServicosSection } from "../nossosServicos/NossosServicos";
-import { PerguntasFrequentesSection } from "../perguntaFrequentes/PerguntasFrequentes";
-import { ContatoSection } from "../contato/Contato";
+import { AppBarSection } from '../appBar/AppBar';
+import { ContainerInitialSection } from '../containerInitial/ContainerInitial';
+import { NossosServicosSection } from '../nossosServicos/NossosServicos';
+import { PerguntasFrequentesSection } from '../perguntaFrequentes/PerguntasFrequentes';
+import { ContatoSection } from '../contato/Contato';
+import { ModeToggle } from '@/components/mode-toggle';
 
 export function HomeSection() {
   return (
@@ -13,6 +14,7 @@ export function HomeSection() {
       <Box>
         <AppBarSection />
       </Box>
+      {/* <ModeToggle/> */}
       <Box>
         <ContainerInitialSection />
       </Box>
